@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">EnglisDictionary</string>
+    <string name="app_name">EnglishDictionary</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="favourite">Favourite</string>
+    <string name="game">Game</string>
+    <string name="settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="configuration_of_speed_speak">Configuration of speed speak</string>
+    <string name="configuration_of_font_size">Configuration of font size</string>
+    <string name="small">Small</string>
+    <string name="normal">Normal</string>
+    <string name="large">Large</string>
+    <string name="extra_large">Extra Large</string>
+    <string name="share_application">Share Application</string>
+    <string name="speed">Speed: </string>
+    <string name="hello_word">Hello Word</string>
+    <string name="search_something">Search something...</string>
 </resources>

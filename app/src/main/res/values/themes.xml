@@ -6,4 +6,16 @@
     </style>
 
     <style name="Theme.EnglisDictionary" parent="Base.Theme.EnglisDictionary" />
+
+    <style name="base_font_title_28">
+        <item name="android:textColor">@color/base_color</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="base_font_title_18">
+        <item name="android:textColor">@color/base_color</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

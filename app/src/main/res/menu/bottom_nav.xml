@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dictionary"
+        android:icon="@drawable/ic_dictionary"
+        android:title="@string/dictionary" />
+
+    <item
+        android:id="@+id/favourite"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/favourite" />
+
+    <item
+        android:id="@+id/game"
+        android:icon="@drawable/ic_game"
+        android:title="@string/game" />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/settings" />
+
+</menu>

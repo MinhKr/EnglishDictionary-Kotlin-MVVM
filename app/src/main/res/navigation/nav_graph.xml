@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dictionaryFragment">
+
+    <fragment
+        android:id="@+id/dictionaryFragment"
+        android:name="com.example.englisdictionary.ui.fragment.dictionary.DictionaryFragment"
+        android:label="DictionaryFragment">
+        <action
+            android:id="@+id/action_dictionaryFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/dictionaryFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="word"
+                app:argType="string" />
+            <argument
+                android:name="mean"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.englisdictionary.ui.fragment.detail.DetailFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="word"
+            app:argType="string" />
+        <argument
+            android:name="mean"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

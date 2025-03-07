@@ -8,7 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.englisdictionary.R
 import com.example.englisdictionary.databinding.ActivityMainBinding
-import com.example.englisdictionary.ui.adapter.WordAdapter
 import com.example.englisdictionary.ui.fragment.dictionary.DictionaryFragment
 import com.example.englisdictionary.ui.fragment.favourite.FavouriteFragment
 import com.example.englisdictionary.ui.fragment.game.GameFragment
@@ -19,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val fragmentManager = supportFragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
         transaction.commit()
     }
 }

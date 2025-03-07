@@ -26,7 +26,12 @@ private const val ARG_PARAM2 = "param2"
 @AndroidEntryPoint
 class DictionaryFragment : Fragment() {
     /*private lateinit var wordAdapter: WordAdapter*/
-    private val wordAdapter by lazy { WordAdapter(emptyList()) }
+    private val wordAdapter by lazy {
+        WordAdapter(
+            emptyList(),
+            this
+        )
+    }
     private var _binding: FragmentDictionaryBinding? = null
     private val binding get() = _binding!!
 
@@ -64,7 +69,10 @@ class DictionaryFragment : Fragment() {
 
     private fun initListener() {
         val words = viewModel.getWords()
-        binding.rvDictionary.adapter = WordAdapter(words)
+        binding.rvDictionary.adapter = WordAdapter(
+            words,
+            this
+        )
         println("Words received: ${words.size} - $words")
         wordAdapter.updateData(words)
     }

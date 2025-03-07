@@ -1,12 +1,13 @@
 package com.example.englisdictionary.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.englisdictionary.data.model.Word
 import com.example.englisdictionary.databinding.ItemDictionaryBinding
 
-class WordAdapter(private val words: List<Word>) : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
+class WordAdapter(private var words: List<Word>) : RecyclerView.Adapter<WordAdapter.ViewHolder>() {
 
     class ViewHolder(var binding: ItemDictionaryBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -26,4 +27,10 @@ class WordAdapter(private val words: List<Word>) : RecyclerView.Adapter<WordAdap
     }
 
     override fun getItemCount(): Int = words.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newWords: List<Word>) {
+        words = newWords
+        notifyDataSetChanged()
+    }
 }

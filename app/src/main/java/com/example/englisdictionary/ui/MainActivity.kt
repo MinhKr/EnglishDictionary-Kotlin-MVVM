@@ -13,7 +13,9 @@ import com.example.englisdictionary.ui.fragment.dictionary.DictionaryFragment
 import com.example.englisdictionary.ui.fragment.favourite.FavouriteFragment
 import com.example.englisdictionary.ui.fragment.game.GameFragment
 import com.example.englisdictionary.ui.fragment.setting.SettingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

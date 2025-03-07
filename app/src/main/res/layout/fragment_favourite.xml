@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="12dp"
         android:layout_marginTop="10dp"
-        android:text="@string/favourite" />
+        android:text="@string/favourite"
+        style="@style/base_font_title_28"/>
 
 </FrameLayout>

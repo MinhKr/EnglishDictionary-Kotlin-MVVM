@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.englisdictionary.databinding.FragmentDictionaryBinding
 import com.example.englisdictionary.ui.adapter.WordAdapter
 import com.example.englisdictionary.ui.viewmodel.DictionaryViewModel
-
+import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,24 +22,24 @@ private const val ARG_PARAM2 = "param2"
  * Use the [DictionaryFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DictionaryFragment : Fragment() {
-    private lateinit var wordAdapter: WordAdapter
-    private lateinit var binding: FragmentDictionaryBinding
 
-    private lateinit var viewModel: DictionaryViewModel
+@AndroidEntryPoint
+class DictionaryFragment : Fragment() {
+    /*private lateinit var wordAdapter: WordAdapter*/
+    private val wordAdapter by lazy { WordAdapter(emptyList()) }
+    private var _binding: FragmentDictionaryBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: DictionaryViewModel by viewModels()
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-        viewModel = ViewModelProvider(this).get(DictionaryViewModel::class.java)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initListener()
     }
 
     override fun onCreateView(
@@ -47,22 +47,33 @@ class DictionaryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentDictionaryBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentDictionaryBinding.inflate(layoutInflater, container, false)
+
         return binding.root
     }
 
     private fun initView() {
-        binding.rvDictionary.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvDictionary.let {
+            it.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            it.adapter = wordAdapter
+        }
+
+        /*adapter = wordAdapter*/
     }
 
     private fun initListener() {
-        viewModel.word.observe(this) {
-            wordAdapter = WordAdapter(it)
-            binding.rvDictionary.adapter = WordAdapter
-        }
-        viewModel.getWordData()
+        val words = viewModel.getWords()
+        binding.rvDictionary.adapter = WordAdapter(words)
+        println("Words received: ${words.size} - $words")
+        wordAdapter.updateData(words)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
     companion object {
         /**

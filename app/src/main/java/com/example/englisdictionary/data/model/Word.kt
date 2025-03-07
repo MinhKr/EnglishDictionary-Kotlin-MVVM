@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class Word(
     @PrimaryKey
     val word: String,
-  /*  val av: ByteArray?,*/
+    val av: ByteArray?,
     val mean: String?
 )
